@@ -1,6 +1,6 @@
 {
   "name": "sooty-cli",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A cli web scraper built on sooty",
   "homepage": "https://github.com/jamrizzi/sooty-cli",
   "author": {
