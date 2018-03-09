@@ -4,7 +4,7 @@
 [![Beerpay](https://beerpay.io/jamrizzi/sooty-cli/make-wish.svg?style=flat-square)](https://beerpay.io/jamrizzi/sooty-cli?focus=wish)
 [![GitHub stars](https://img.shields.io/github/stars/jamrizzi/sooty-cli.svg?style=social&label=Stars)](https://github.com/jamrizzi/sooty-cli)
 
-> A cli scraper built on sooty
+> A cli web scraper built on sooty
 
 Please &#9733; this repo if you found it useful &#9733; &#9733; &#9733;
 

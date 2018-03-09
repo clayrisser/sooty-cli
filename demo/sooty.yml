@@ -1,6 +1,5 @@
 url: https://www.npmjs.com/~jamrizzi
 queries:
-  packages: '.collaborated-packages li'
-  packagesHTML:
+  npmPackages:
     selector: '.collaborated-packages li'
-    html: true
+    filter: '[^\s]*'

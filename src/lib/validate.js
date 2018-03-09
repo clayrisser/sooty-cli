@@ -17,5 +17,15 @@ export default async function validate(cmd, options) {
     args.root,
     await joiValidate(commander.config || 'sooty.yml', joi.string(), 'config')
   );
+  args.output = commander.output
+    ? path.resolve(
+        args.root,
+        await joiValidate(
+          commander.output || 'results.yml',
+          joi.string(),
+          'config'
+        )
+      )
+    : false;
   return args;
 }

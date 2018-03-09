@@ -1,7 +1,7 @@
 {
   "name": "sooty-cli",
   "version": "0.0.1",
-  "description": "A cli scraper built on sooty",
+  "description": "A cli web scraper built on sooty",
   "homepage": "https://github.com/jamrizzi/sooty-cli",
   "author": {
     "name": "Jam Risser",
@@ -22,7 +22,7 @@
     "lint": "eslint ./",
     "lint:fix": "eslint --fix ./",
     "prepublish": "npm run build",
-    "start": "npm run lint && babel-node src/bin/sooty -r demo",
+    "start": "npm run lint && babel-node src/bin/sooty.js -r demo",
     "start:dist": "npm run build && node bin/sooty"
   },
   "dependencies": {
@@ -34,7 +34,7 @@
     "lodash": "^4.17.5",
     "puppeteer": "^0.11.0",
     "set-envs": "^0.1.0",
-    "sooty": "0.0.3",
+    "sooty": "0.0.4",
     "winston": "^2.4.0"
   },
   "devDependencies": {
