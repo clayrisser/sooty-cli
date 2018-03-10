@@ -1,5 +1,6 @@
-import { createServer } from 'http-server';
+import path from 'path';
 import silentcp from 'easycp';
+import { createServer } from 'http-server';
 
 const config = {
   port: 8080
@@ -8,14 +9,16 @@ const config = {
 let server = null;
 
 beforeAll(async () => {
-  server = createServer();
+  server = createServer({
+    root: path.resolve(__dirname, 'public')
+  });
   await new Promise((resolve, reject) => {
     server.server.on('error', err => {
       if (err.errno !== 'EADDRINUSE') {
         return reject(err);
       }
       // eslint-disable-next-line no-console
-      console.warn(`server already running at ${config.port}`);
+      console.warn(`server already listening at ${config.port}`);
       return resolve();
     });
     server.listen(8080, err => {
