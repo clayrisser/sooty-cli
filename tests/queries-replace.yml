@@ -1,0 +1,5 @@
+url: http://localhost:8080/queries.html
+queries:
+  numbers:
+    selector: '.numbers li'
+    replace: '[A-Z]'
