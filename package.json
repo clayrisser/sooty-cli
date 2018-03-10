@@ -9,27 +9,28 @@
     "url": "https://jam.jamrizzi.com"
   },
   "main": "lib/index.js",
-  "files": [
-    "lib",
-    "bin"
-  ],
+  "files": ["lib", "bin"],
   "bin": {
     "sooty": "bin/sooty.js"
   },
   "scripts": {
-    "build": "npm run clean && npm run lint && babel src/lib -d lib && babel src/bin -d bin",
-    "clean": "rm -rf lib bin",
+    "build":
+      "npm run clean && npm run lint && babel src/lib -d lib && babel src/bin -d bin",
+    "clean": "rm -rf lib bin .tmp",
     "lint": "eslint ./",
     "lint:fix": "eslint --fix ./",
     "prepublish": "npm run build",
     "start": "npm run lint && babel-node src/bin/sooty.js -r demo",
-    "start:dist": "npm run build && node bin/sooty"
+    "start:dist": "npm run build && node bin/sooty",
+    "test": "npm run lint && jest",
+    "test:serve": "http-server tests/public"
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
     "boom": "^7.2.0",
     "commander": "^2.15.0",
     "easy-joi": "0.0.2",
+    "fs-extra": "^5.0.0",
     "joi": "^13.1.2",
     "lodash": "^4.17.5",
     "puppeteer": "^0.11.0",
@@ -42,10 +43,14 @@
     "babel-eslint": "^8.2.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
+    "easycp": "0.0.2",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "^2.9.0"
+    "eslint-plugin-import": "^2.9.0",
+    "eslint-plugin-jest": "^21.13.0",
+    "http-server": "^0.11.1",
+    "jest": "^22.4.2"
   },
   "license": "MIT",
   "repository": "https://github.com/jamrizzi/sooty-cli",
@@ -65,8 +70,9 @@
   "engines": {
     "node": ">= 4.0.0"
   },
-  "eslintIgnore": [
-    "lib",
-    "bin"
-  ]
+  "eslintIgnore": ["lib", "bin"],
+  "jest": {
+    "testMatch": ["**/tests/**/*.js"],
+    "verbose": true
+  }
 }

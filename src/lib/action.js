@@ -1,6 +1,6 @@
 import _ from 'lodash';
 import commander from 'commander';
-import fs from 'fs';
+import fs from 'fs-extra';
 import joi from 'joi';
 import jsYaml from 'js-yaml';
 import setEnvs from 'set-envs';
@@ -53,12 +53,6 @@ async function outputResults(resultsPath, results) {
       resultsString = jsYaml.dump(results);
       break;
   }
-  await new Promise((resolve, reject) => {
-    fs.writeFile(resultsPath, resultsString, function(err) {
-      if (err) {
-        return reject(err);
-      }
-      return resultsString;
-    });
-  });
+  await fs.mkdirs((resultsPath.match(/.+(?=\/)/g) || []).join(''));
+  await fs.writeFile(resultsPath, resultsString);
 }

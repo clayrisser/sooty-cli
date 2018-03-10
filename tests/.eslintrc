@@ -1,0 +1,7 @@
+{
+  "extends": ["plugin:jest/recommended"],
+  "rules": {
+    "global-require": "off",
+    "import/no-unresolved": "off"
+  }
+}
