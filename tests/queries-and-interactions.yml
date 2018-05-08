@@ -1,0 +1,12 @@
+url: http://localhost:8080/interactions.html
+queries:
+  requires: firstName
+  firstName:
+    selector: 'input[name="firstName"]'
+  lastName:
+    selector: 'input[name="lastName"]'
+interactions:
+  profile:
+    fields:
+      firstName: Jam
+      lastName: Risser
