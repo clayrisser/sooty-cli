@@ -1,13 +1,12 @@
-import _ from 'lodash';
+import Sooty from 'sooty';
 import commander from 'commander';
 import fs from 'fs-extra';
 import joi from 'joi';
 import jsYaml from 'js-yaml';
 import setEnvs from 'set-envs';
-import sooty from 'sooty';
+import { isValid } from 'easy-joi';
 import log from './log';
 import validate from './validate';
-import { isValid } from 'easy-joi';
 
 export default async function action(cmd, options) {
   const args = await validate(cmd, options);
@@ -15,7 +14,8 @@ export default async function action(cmd, options) {
   switch (cmd) {
     case 'run':
       log.info('scraping data . . .');
-      const results = await sooty(config);
+      const sooty = new Sooty(config);
+      const results = await sooty.run();
       if (args.output) {
         await outputResults(args.output, results);
         log.info(`results saved to ${args.output}`);
