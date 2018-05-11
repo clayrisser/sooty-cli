@@ -6,9 +6,11 @@ const config = {
   port: 8080
 };
 
+const { env } = process;
 let server = null;
 
 beforeAll(async () => {
+  env.__JEST__ = true;
   server = createServer({
     root: path.resolve(__dirname, 'public')
   });
@@ -37,7 +39,7 @@ afterAll(() => {
 describe('queries', () => {
   it('should scrape data from website', async () => {
     await silentcp(
-      'babel-node -- src/bin/sooty -r tests -c queries.yml -o ../.tmp/queries.json'
+      'babel-node -- src/bin -r tests -c queries.yml -o ../.tmp/queries.json'
     );
     const queries = require('../.tmp/queries.json');
     expect(queries).toEqual({ numbers: ['One', 'Two', 'Three'] });
@@ -45,7 +47,7 @@ describe('queries', () => {
 
   it('should scrape and filter data from website', async () => {
     await silentcp(
-      'babel-node -- src/bin/sooty -r tests -c queries-filter.yml -o ../.tmp/queries-filter.json'
+      'babel-node -- src/bin -r tests -c queries-filter.yml -o ../.tmp/queries-filter.json'
     );
     const queries = require('../.tmp/queries-filter.json');
     expect(queries).toEqual({ numbers: ['Two', 'Three'] });
@@ -53,7 +55,7 @@ describe('queries', () => {
 
   it('should scrape and replace data from website', async () => {
     await silentcp(
-      'babel-node -- src/bin/sooty -r tests -c queries-replace.yml -o ../.tmp/queries-replace.json'
+      'babel-node -- src/bin -r tests -c queries-replace.yml -o ../.tmp/queries-replace.json'
     );
     const queries = require('../.tmp/queries-replace.json');
     expect(queries).toEqual({ numbers: ['ne', 'wo', 'hree'] });

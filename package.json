@@ -1,6 +1,6 @@
 {
   "name": "sooty-cli",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "A cli web scraper built on sooty",
   "homepage": "https://github.com/jamrizzi/sooty-cli",
   "author": {
@@ -9,13 +9,17 @@
     "url": "https://jam.jamrizzi.com"
   },
   "main": "lib/index.js",
-  "files": ["lib", "bin"],
+  "files": [
+    "lib",
+    "bin"
+  ],
   "bin": {
     "sooty": "bin/sooty.js"
   },
   "scripts": {
-    "build":
-      "npm run clean && npm run lint && babel src/lib -d lib && babel src/bin -d bin",
+    "build": "npm run clean && npm run build:lib && npm run build:bin && npm run test",
+    "build:bin": "mkdir bin && babel src/bin.js -o bin/sooty.js",
+    "build:lib": "babel src --ignore bin.js -d lib",
     "clean": "rm -rf lib bin .tmp",
     "lint": "eslint ./",
     "lint:fix": "eslint --fix ./",
@@ -30,13 +34,14 @@
     "boom": "^7.2.0",
     "commander": "^2.15.0",
     "easy-joi": "0.0.2",
+    "easycp": "0.0.2",
     "fs-extra": "^5.0.0",
-    "js-yaml": "3.11.0",
     "joi": "^13.1.2",
+    "js-yaml": "3.11.0",
     "lodash": "^4.17.5",
     "puppeteer": "^0.11.0",
     "set-envs": "^0.1.0",
-    "sooty": "0.0.4",
+    "sooty": "0.0.8",
     "winston": "^2.4.0"
   },
   "devDependencies": {
@@ -44,7 +49,6 @@
     "babel-eslint": "^8.2.2",
     "babel-preset-env": "^1.6.1",
     "babel-preset-stage-2": "^6.24.1",
-    "easycp": "0.0.2",
     "eslint": "^4.18.1",
     "eslint-config-airbnb": "^16.1.0",
     "eslint-config-prettier": "^2.9.0",
@@ -71,9 +75,14 @@
   "engines": {
     "node": ">= 4.0.0"
   },
-  "eslintIgnore": ["lib", "bin"],
+  "eslintIgnore": [
+    "lib",
+    "bin"
+  ],
   "jest": {
-    "testMatch": ["**/tests/**/*.js"],
+    "testMatch": [
+      "**/tests/**/*.js"
+    ],
     "verbose": true
   }
 }

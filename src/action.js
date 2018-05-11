@@ -39,7 +39,7 @@ async function loadConfig(configPath) {
 }
 
 async function outputResults(resultsPath, results) {
-  let format = (resultsPath.match(/\.[^\.\/\\]+$/g) || []).join('').substr(1);
+  let format = (resultsPath.match(/\.[^./\\]+$/g) || []).join('').substr(1);
   if (format === 'yaml') format = 'yml';
   if (!await isValid(format, joi.string().valid('json', 'yml'))) {
     format = 'yml';

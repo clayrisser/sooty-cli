@@ -1,10 +1,7 @@
-#!/usr/bin/env node
-
-import 'babel-polyfill';
 import commander from 'commander';
-import action from '../lib/action';
-import error from '../lib/error';
-import { version } from '../package';
+import action from './action';
+import error from './error';
+import { version } from '../package.json';
 
 let isAction = false;
 
