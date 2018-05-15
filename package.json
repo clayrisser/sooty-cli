@@ -1,6 +1,6 @@
 {
   "name": "sooty-cli",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A cli web scraper built on sooty",
   "homepage": "https://github.com/jamrizzi/sooty-cli",
   "author": {
@@ -41,7 +41,7 @@
     "lodash": "^4.17.5",
     "puppeteer": "^0.11.0",
     "set-envs": "^0.1.0",
-    "sooty": "0.0.8",
+    "sooty": "0.0.12",
     "winston": "^2.4.0"
   },
   "devDependencies": {
